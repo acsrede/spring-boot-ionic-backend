@@ -9,8 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.ionic.cursomc.domain.Categoria;
 import com.ionic.cursomc.domain.Cidade;
+import com.ionic.cursomc.domain.Cliente;
 import com.ionic.cursomc.domain.Estado;
 import com.ionic.cursomc.domain.Produto;
+import com.ionic.cursomc.domain.enums.TipoCliente;
 import com.ionic.cursomc.repositories.CategoriaRepository;
 import com.ionic.cursomc.repositories.CidadeRepository;
 import com.ionic.cursomc.repositories.EstadoRepository;
@@ -50,6 +52,10 @@ public class CursomcApplication implements CommandLineRunner {
 		Cidade cid1 = new Cidade(null, "Uberlândia", est1);
 		Cidade cid2 = new Cidade(null, "São Paulo", est2);
 		Cidade cid3 = new Cidade(null, "Campinas", est2);
+		
+		Cliente cli1 = new Cliente(null, "Maria Silva", "marias@hotmail.com", "3637891277", TipoCliente.PESSOAFISICA);
+		cli1.getTelefones().addAll(Arrays.asList("27363323", "93838393"));
+		
 		
 		cat1.getProdutos().addAll(Arrays.asList(prod1, prod2, prod2));
 		cat2.getProdutos().addAll(Arrays.asList(prod2));
