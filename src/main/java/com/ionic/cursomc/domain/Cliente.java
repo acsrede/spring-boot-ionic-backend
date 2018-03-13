@@ -29,7 +29,7 @@ public class Cliente implements Serializable {
 	private Integer tipo;
 	
 	@OneToMany(mappedBy="cliente")
-	private List<Endereco> endereco = new ArrayList<>();
+	private List<Endereco> enderecos = new ArrayList<>();
 	
 	@ElementCollection
 	@CollectionTable(name="TELEFONE")
@@ -86,12 +86,12 @@ public class Cliente implements Serializable {
 		this.cpfOuCnpj = cpfOuCnpj;
 	}
 
-	public List<Endereco> getEndereco() {
-		return endereco;
+	public List<Endereco> getEnderecos() {
+		return enderecos;
 	}
 
 	public void setEndereco(List<Endereco> endereco) {
-		this.endereco = endereco;
+		this.enderecos = endereco;
 	}
 
 	public Set<String> getTelefones() {
