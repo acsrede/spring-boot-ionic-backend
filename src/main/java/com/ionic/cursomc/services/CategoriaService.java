@@ -16,7 +16,7 @@ public class CategoriaService {
 	private CategoriaRepository categoriaRepository;
 
 	//find category
-	public Optional<Categoria> buscaPorId(Integer id) {
+	public Optional<Categoria> find(Integer id) {
 		Optional<Categoria> obj = categoriaRepository.findById(id);
 		//is null
 		if (!obj.isPresent()) {
@@ -32,4 +32,9 @@ public class CategoriaService {
 		return categoriaRepository.save(obj);
 	}
 	
+	//update category
+	public Categoria update(Categoria obj) {
+		find(obj.getId());
+		return categoriaRepository.save(obj);
+	}
 }
