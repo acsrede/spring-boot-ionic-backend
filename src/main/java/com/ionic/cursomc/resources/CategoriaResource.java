@@ -1,7 +1,9 @@
 package com.ionic.cursomc.resources;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ionic.cursomc.domain.Categoria;
+import com.ionic.cursomc.dto.CategoriaDTO;
 import com.ionic.cursomc.services.CategoriaService;
 
 @RestController
@@ -23,7 +26,7 @@ public class CategoriaResource {
 	private CategoriaService categoriaService;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)	
-	public ResponseEntity<Optional<Categoria>> findId(@PathVariable Integer id) {		
+	public ResponseEntity<Optional<Categoria>> find(@PathVariable Integer id) {		
 		Optional<Categoria> obj = categoriaService.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -48,4 +51,10 @@ public class CategoriaResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@RequestMapping(method=RequestMethod.GET)	
+	public ResponseEntity<List<CategoriaDTO>> findAll() {		
+		List<Categoria> list = categoriaService.findAll();
+		List<CategoriaDTO> listDto = list.stream().map(obj -> new CategoriaDTO(obj)).collect(Collectors.toList());
+		return ResponseEntity.ok().body(listDto);
+	}
 }
