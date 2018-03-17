@@ -23,14 +23,10 @@ public class CategoriaService {
 	private CategoriaRepository categoriaRepository;
 
 	//find category
-	public Optional<Categoria> find(Integer id) {
+	public Categoria find(Integer id) {
 		Optional<Categoria> obj = categoriaRepository.findById(id);
-		//is null
-		if (!obj.isPresent()) {
-			throw new ObjectNotFoundException("Objeto não encontrado! ID: " + 
-					id + ", Tipo: " + Categoria.class.getName());
-		}
-		return obj;
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado! ID: " + id + ", Tipo: " + Categoria.class.getName()));
 	}
 	
 	//insert new category

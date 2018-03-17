@@ -2,7 +2,6 @@ package com.ionic.cursomc.resources;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -30,8 +29,8 @@ public class CategoriaResource {
 	private CategoriaService categoriaService;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)	
-	public ResponseEntity<Optional<Categoria>> find(@PathVariable Integer id) {		
-		Optional<Categoria> obj = categoriaService.find(id);
+	public ResponseEntity<Categoria> find(@PathVariable Integer id) {		
+		Categoria obj = categoriaService.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 

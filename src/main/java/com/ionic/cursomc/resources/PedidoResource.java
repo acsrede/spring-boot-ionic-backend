@@ -1,7 +1,5 @@
 package com.ionic.cursomc.resources;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,8 +18,8 @@ public class PedidoResource {
 	private PedidoService pedidoService;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)	
-	public ResponseEntity<Optional<Pedido>> find(@PathVariable Integer id) {		
-		Optional<Pedido> obj = pedidoService.find(id);
+	public ResponseEntity<Pedido> find(@PathVariable Integer id) {		
+		Pedido obj = pedidoService.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 
