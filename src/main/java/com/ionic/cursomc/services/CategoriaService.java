@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.ionic.cursomc.domain.Categoria;
+import com.ionic.cursomc.dto.CategoriaDTO;
 import com.ionic.cursomc.repositories.CategoriaRepository;
 import com.ionic.cursomc.services.exceptions.DataIntegrityException;
 import com.ionic.cursomc.services.exceptions.ObjectNotFoundException;
@@ -59,8 +60,13 @@ public class CategoriaService {
 		return categoriaRepository.findAll();
 	}
 	
+	//pagination
 	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = new PageRequest(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return categoriaRepository.findAll(pageRequest);
+	}
+	
+	public Categoria fromDTO(CategoriaDTO objDto) {
+		return new Categoria(objDto.getId(), objDto.getNome());
 	}
 }
