@@ -21,5 +21,5 @@ public class PedidoService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! ID: " + id + ", Tipo: " + Categoria.class.getName()));
 	}
-	
+
 }

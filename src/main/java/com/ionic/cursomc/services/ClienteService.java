@@ -74,8 +74,7 @@ public class ClienteService<S> {
 	
 	//pagination
 	public Page<Cliente> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
-		@SuppressWarnings("deprecation")
-		PageRequest pageRequest = new PageRequest(page, linesPerPage, Direction.valueOf(direction), orderBy);
+		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return clienteRepository.findAll(pageRequest);
 	}
 	
