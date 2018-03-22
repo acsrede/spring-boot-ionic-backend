@@ -11,6 +11,7 @@ import com.ionic.cursomc.domain.ItemPedido;
 import com.ionic.cursomc.domain.PagamentoComBoleto;
 import com.ionic.cursomc.domain.Pedido;
 import com.ionic.cursomc.domain.enums.EstadoPagamento;
+import com.ionic.cursomc.repositories.ClienteRepository;
 import com.ionic.cursomc.repositories.ItemPedidoRepository;
 import com.ionic.cursomc.repositories.PagamentoRepository;
 import com.ionic.cursomc.repositories.PedidoRepository;
@@ -34,6 +35,9 @@ public class PedidoService {
 	
 	@Autowired
 	private ItemPedidoRepository itemPedidoRepository;
+	
+	@Autowired
+	private ClienteRepository clienteRepository;
 
 	public Pedido find(Integer id) {
 		Optional<Pedido> obj = pedidoRepository.findById(id);
@@ -44,6 +48,7 @@ public class PedidoService {
 	public Pedido insert(Pedido obj) {
 		obj.setId(null);
 		obj.setInstante(new Date());
+		obj.setCliente(clienteRepository.findById(obj.getCliente().getId()).orElse(null));
 		obj.getPagamento().setEstado(EstadoPagamento.PENDENTE);
 		obj.getPagamento().setPedido(obj);
 		if (obj.getPagamento() instanceof PagamentoComBoleto) {
@@ -54,10 +59,12 @@ public class PedidoService {
 		pagamentoRepository.save(obj.getPagamento());
 		for (ItemPedido ip : obj.getItens()) {
 			ip.setDesconto(0.0);
-			ip.setPreco(produtoRepository.findById(ip.getProduto().getId()).orElse(null).getPreco());
+			ip.setProduto(produtoRepository.findById(ip.getProduto().getId()).orElse(null));
+			ip.setPreco(ip.getProduto().getPreco());
 			ip.setPedido(obj);
 		}
 		itemPedidoRepository.saveAll(obj.getItens());
+		System.out.println(obj);
 		return obj;
 	}
 
