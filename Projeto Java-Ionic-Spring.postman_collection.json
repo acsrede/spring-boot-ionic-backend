@@ -1,0 +1,173 @@
+{
+	"id": "0d9b2ea2-a69c-db1d-59e1-1ad1471e768e",
+	"name": "Projeto Java-Ionic-Spring",
+	"description": "",
+	"order": [
+		"c9a5cd91-6651-7267-0c5c-c51bb8323c78",
+		"1fa7eefe-e513-fe82-fccc-1580e87b7eb3",
+		"898106e4-4903-2615-4cfa-8434436bf171",
+		"fdc10ba5-a7fa-802c-c2f2-3293460599da",
+		"104209f3-64bb-5af7-a7ff-ec71f624fc38"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1521461021803,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "104209f3-64bb-5af7-a7ff-ec71f624fc38",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8090/pedidos",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "0d9b2ea2-a69c-db1d-59e1-1ad1471e768e",
+			"data": [],
+			"dataMode": "raw",
+			"name": "localhost:8090/pedidos",
+			"description": "insert de novo pedido",
+			"descriptionFormat": "html",
+			"time": 1521630424142,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\r\n\t\"cliente\" : {\"id\" : 1},\r\n\t\"enderecoDeEntrega\" : {\"id\" : 1},\r\n\t\"pagamento\" : {\r\n\t\t\"numeroDeParcelas\" : 10,\r\n\t\t\"@type\": \"pagamentoComCartao\"\r\n\t},\r\n\t\"itens\" : [\r\n\t\t{\r\n\t\t\t\"quantidade\" : 2,\r\n\t\t\t\"produto\" : {\"id\" : 3}\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"quantidade\" : 1,\r\n\t\t\t\"produto\" : {\"id\" : 1}\r\n\t\t}\r\n\t]\r\n}"
+		},
+		{
+			"id": "1fa7eefe-e513-fe82-fccc-1580e87b7eb3",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:8090/produtos/?nome=or&categorias=1,4",
+			"queryParams": [
+				{
+					"key": "nome",
+					"value": "or",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "categorias",
+					"value": "1,4",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "0d9b2ea2-a69c-db1d-59e1-1ad1471e768e",
+			"data": null,
+			"dataMode": "params",
+			"name": "localhost:8090/produtos/?nome=or&categorias=1,4",
+			"description": "pesquisa de produtos personalizado e paginado",
+			"descriptionFormat": "html",
+			"time": 1521544829856,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "898106e4-4903-2615-4cfa-8434436bf171",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8090/clientes",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "0d9b2ea2-a69c-db1d-59e1-1ad1471e768e",
+			"data": [],
+			"dataMode": "raw",
+			"name": "localhost:8090/clientes",
+			"description": "novo cliente com dados fake",
+			"descriptionFormat": "html",
+			"time": 1521544866939,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\r\n\"nome\" : \"João da Silva\",\r\n\"email\" : \"joao@gmail.com\",\r\n\"cpfOuCnpj\" : \"39044683756\",\r\n\"tipo\" : 1,\r\n\"telefone1\" : \"997723874\",\r\n\"telefone2\" : \"32547698\",\r\n\"logradouro\" : \"Rua das Acácias\",\r\n\"numero\" : \"345\",\r\n\"complemento\" : \"Apto 302\",\r\n\"cep\" : \"38746928\",\r\n\"cidadeId\" : 2\r\n}"
+		},
+		{
+			"id": "c9a5cd91-6651-7267-0c5c-c51bb8323c78",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8090/categorias",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "0d9b2ea2-a69c-db1d-59e1-1ad1471e768e",
+			"data": [],
+			"dataMode": "raw",
+			"name": "http://localhost:8100/categorias",
+			"description": "lista todas categorias",
+			"descriptionFormat": "html",
+			"time": 1521461026636,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"nome\": \"Teste\"\n}"
+		},
+		{
+			"id": "fdc10ba5-a7fa-802c-c2f2-3293460599da",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:8090/pedidos/3",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "0d9b2ea2-a69c-db1d-59e1-1ad1471e768e",
+			"data": null,
+			"dataMode": "params",
+			"name": "localhost:8090/pedidos/3",
+			"description": "lista pedidos por id",
+			"descriptionFormat": "html",
+			"time": 1521630405096,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		}
+	]
+}
