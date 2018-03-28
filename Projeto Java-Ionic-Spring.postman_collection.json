@@ -7,7 +7,9 @@
 		"1fa7eefe-e513-fe82-fccc-1580e87b7eb3",
 		"898106e4-4903-2615-4cfa-8434436bf171",
 		"fdc10ba5-a7fa-802c-c2f2-3293460599da",
-		"104209f3-64bb-5af7-a7ff-ec71f624fc38"
+		"104209f3-64bb-5af7-a7ff-ec71f624fc38",
+		"76a6f25c-3a4d-21ae-936d-4018e201dca0",
+		"da6639bb-7e73-cd4d-2931-bef101080fdb"
 	],
 	"folders": [],
 	"folders_order": [],
@@ -85,6 +87,35 @@
 			"helperAttributes": {}
 		},
 		{
+			"id": "76a6f25c-3a4d-21ae-936d-4018e201dca0",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8100/login",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1522257780042,
+			"name": "http://localhost:8100/login",
+			"description": "login autenticado com jwt (gerando token)",
+			"collectionId": "0d9b2ea2-a69c-db1d-59e1-1ad1471e768e",
+			"responses": [],
+			"rawModeData": "{\n\t\"email\": \"acs.rede@gmail.com\",\n\t\"senha\": \"123\"\n}"
+		},
+		{
 			"id": "898106e4-4903-2615-4cfa-8434436bf171",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -145,6 +176,36 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"rawModeData": "{\n\t\"nome\": \"Teste\"\n}"
+		},
+		{
+			"id": "da6639bb-7e73-cd4d-2931-bef101080fdb",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhY3MucmVkZUBnbWFpbC5jb20iLCJleHAiOjE1MjIyNTc3ODF9.HcSwsiw1QOTEIRJuPYhKzqI5SqwPgIB5I4DHMfm8ksk\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhY3MucmVkZUBnbWFpbC5jb20iLCJleHAiOjE1MjIyNTc3ODF9.HcSwsiw1QOTEIRJuPYhKzqI5SqwPgIB5I4DHMfm8ksk",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:8100/pedidos/1",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "0d9b2ea2-a69c-db1d-59e1-1ad1471e768e",
+			"data": null,
+			"dataMode": "params",
+			"name": "localhost:8100/pedidos/1",
+			"description": "buscar pedido por id com token autenticando",
+			"descriptionFormat": "html",
+			"time": 1522257909353,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
 		},
 		{
 			"id": "fdc10ba5-a7fa-802c-c2f2-3293460599da",
