@@ -19,6 +19,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.ionic.cursomc.security.JWTAuthenticationFilter;
+import com.ionic.cursomc.security.JWTAuthorizationFilter;
 import com.ionic.cursomc.security.JWTUtil;
 
 @Configuration
@@ -38,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	public static final String[] PUBLIC_MATCHERS_GET = { "/produtos/**", "/categorias/**", "/estados/**" };
 
-	private static final String[] PUBLIC_MATCHERS_POST = { "/clientes/**", "/auth/forgot/**" };
+	//private static final String[] PUBLIC_MATCHERS_POST = { "/clientes/**", "/auth/forgot/**" };
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
@@ -48,10 +49,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		}
 
 		httpSecurity.cors().and().csrf().disable().authorizeRequests()
-			.antMatchers(HttpMethod.POST, PUBLIC_MATCHERS_POST).permitAll()
+//			.antMatchers(HttpMethod.POST, PUBLIC_MATCHERS_POST).permitAll()
 			.antMatchers(HttpMethod.GET, PUBLIC_MATCHERS_GET).permitAll()
 			.antMatchers(PUBLIC_MATCHERS).permitAll().anyRequest().authenticated().and()
 			.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil))
+			.addFilter(new JWTAuthorizationFilter(authenticationManager(), jwtUtil, userDetailsService))
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	}
 
