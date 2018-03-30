@@ -15,12 +15,15 @@ import com.ionic.cursomc.domain.Categoria;
 import com.ionic.cursomc.domain.Cidade;
 import com.ionic.cursomc.domain.Cliente;
 import com.ionic.cursomc.domain.Endereco;
+import com.ionic.cursomc.domain.enums.Perfil;
 import com.ionic.cursomc.domain.enums.TipoCliente;
 import com.ionic.cursomc.dto.ClienteDTO;
 import com.ionic.cursomc.dto.ClienteNewDTO;
 import com.ionic.cursomc.repositories.CidadeRepository;
 import com.ionic.cursomc.repositories.ClienteRepository;
 import com.ionic.cursomc.repositories.EnderecoRepository;
+import com.ionic.cursomc.security.UserSS;
+import com.ionic.cursomc.services.exceptions.AuthorizationException;
 import com.ionic.cursomc.services.exceptions.DataIntegrityException;
 import com.ionic.cursomc.services.exceptions.ObjectNotFoundException;
 
@@ -41,6 +44,10 @@ public class ClienteService<S> {
 	
 	//find client
 	public Cliente find(Integer id) {
+		UserSS user = UserService.authenicated();
+		if (user == null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())) {
+			throw new AuthorizationException("Acesso negado!");
+		}
 		Optional<Cliente> obj = clienteRepository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! ID: " + id + ", Tipo: " + Categoria.class.getName()));
